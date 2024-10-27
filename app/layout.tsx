@@ -14,6 +14,31 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
+const butler = localFont({
+  src: './fonts/Butler_Regular.otf',
+  variable: '--font-butler',
+  weight: '100 900'
+})
+
+const newsreaderDisplay = localFont({
+  src: './fonts/NewsreaderDisplay-Regular.ttf',
+  variable: '--font-newsreader-display',
+  weight: '100 900'
+})
+
+const newsreaderText = localFont({
+  src: './fonts/NewsreaderText-Regular.ttf',
+  variable: '--font-newsreader-text',
+  weight: '100 900'
+})
+
+const poppins = localFont({
+  src: './fonts/Poppins-Regular.otf',
+  variable: '--font-poppins',
+  weight: '100 900'
+})
+
+
 export const metadata: Metadata = {
   title: "The Wedding of Tiffany & Jared by Invitato",
   description: "Together with joyful hearts, we re pleased to announce the beginning of this new chapter of our lives together. Please click the Website Invitation link on this message for more information about our wedding details.",
@@ -27,7 +52,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${butler.variable} ${newsreaderDisplay.variable} ${newsreaderText.variable} ${poppins.variable} antialiased`}
       >
         <Providers>
           {children}
