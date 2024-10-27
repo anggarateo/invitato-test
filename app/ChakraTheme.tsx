@@ -2,9 +2,9 @@ import { extendTheme } from "@chakra-ui/react"
 
 const ChakraTheme = extendTheme({
   fonts: {
-    butler: `--font-butler`,
-    newsreaderDisplay: `--font-newsreader-display`,
-    newsreaderText: `--font-newsreader-text`,
+    butler: `Butler`,
+    newsreaderDisplay: `Newsreader Display`,
+    newsreaderText: `Newsreader Text`,
     poppins: `--font-poppins`
   },
   colors: {
