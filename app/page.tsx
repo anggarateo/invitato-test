@@ -1,6 +1,6 @@
 'use client'
 
-import { Box, Button, Center, Flex, SlideFade, Stack, Text } from "@chakra-ui/react";
+import { Box, Button, Flex, SlideFade } from "@chakra-ui/react";
 import localFont from "next/font/local";
 import { useEffect, useRef, useState } from "react";
 import FixedLeft from "./components/FixedLeft";
@@ -8,19 +8,19 @@ import Cover from "./components/Cover";
 import ContentBegin from "./components/ContentBegin";
 import ContentSecond from "./components/ContentSecond";
 
-const butler = localFont({
+localFont({
   src: './fonts/Butler_Regular.otf',
   variable: '--font-butler',
   weight: '100 900'
 })
 
-const newsreaderDisplay = localFont({
+localFont({
   src: './fonts/NewsreaderDisplay-Regular.ttf',
   variable: '--font-newsreader-display',
   weight: '100 900'
 })
 
-const newsreaderText = localFont({
+localFont({
   src: './fonts/NewsreaderText-Regular.ttf',
   variable: '--font-newsreader-text',
   weight: '100 900'
@@ -36,8 +36,8 @@ export default function Home() {
   const [isShow, setShow] = useState(false);
   const [isOpen, setOpen] = useState(false);
   const [isBegin, setBegin] = useState(false);
-  const scrollTarget = useRef<any>(null)
-  const myAudio = useRef<any>(null)
+  const scrollTarget = useRef<any>(null) // eslint-disable-line
+  const myAudio = useRef<any>(null) // eslint-disable-line
   const [isPlaying, setPlaying] = useState(false)
 
   useEffect(() => {
@@ -61,9 +61,11 @@ export default function Home() {
 
   function handleAudio() {
     if (myAudio.current) {
-      isPlaying
-        ? myAudio.current.pause()
-        : myAudio.current.play()
+      if (isPlaying) {
+        myAudio.current.pause()
+      } else {
+        myAudio.current.play()
+      }
     
       setPlaying(!isPlaying)
     }

@@ -85,7 +85,7 @@ export default function FixedLeft(
               letterSpacing='1px'
               maxW='800px'
             >
-              "Aku ingin mencintaimu dengan sederhana; dengan kata yang tak sempat diucapkan kayu kepada api yang menjadikannya abu. Aku ingin mencintaimu dengan sederhana; dengan isyarat yang tak sempat disampaikan awan kepada hujan yang menjadikannya tiada."<br/>
+              &quot;Aku ingin mencintaimu dengan sederhana; dengan kata yang tak sempat diucapkan kayu kepada api yang menjadikannya abu. Aku ingin mencintaimu dengan sederhana; dengan isyarat yang tak sempat disampaikan awan kepada hujan yang menjadikannya tiada.&quot;<br/>
               — Sapardi Djoko Damono
             </Text>
           </SlideFade>

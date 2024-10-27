@@ -32,8 +32,11 @@ export default function ContentSecond(
 
   function handleScroll() {
     if (ref.current) {
-      ref.current.getBoundingClientRect().top <= window.innerHeight / 2
-        ? setFocus(true) : setFocus(false)
+      if (ref.current.getBoundingClientRect().top <= window.innerHeight / 2) {
+        setFocus(true)
+      } else {
+        setFocus(false)
+      }
     }
   }
 
@@ -45,7 +48,7 @@ export default function ContentSecond(
   useEffect(() => {
     document.addEventListener('scroll', handleScroll)
     return () => document.removeEventListener('scroll', handleScroll)
-  }, [])
+  }, []) // eslint-disable-line
 
   return (
     <Box
@@ -96,7 +99,7 @@ export default function ContentSecond(
           fontSize='32px'
         >
           Welcome to<br/>
-          Tiffany & Jared's<br/>
+          Tiffany & Jared’s<br/>
           Wedding Website
         </Heading>
       </SlideFade>
@@ -141,6 +144,7 @@ export default function ContentSecond(
             >
               <Image
                 src={img.src}
+                alt={img.src}
                 objectFit='cover'
                 objectPosition='center center'
                 h='390px'
