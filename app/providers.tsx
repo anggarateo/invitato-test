@@ -2,11 +2,11 @@
 
 import { ChakraProvider } from '@chakra-ui/react'
 import ChakraTheme from './ChakraTheme'
-import ChakraFonts from './ChakraFonts'
+import Fonts from './ChakraFonts'
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return <ChakraProvider theme={ChakraTheme}>
-    <ChakraFonts />
+    <Fonts />
     {children}
   </ChakraProvider>
 }
