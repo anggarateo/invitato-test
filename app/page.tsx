@@ -8,6 +8,27 @@ import Cover from "./components/Cover";
 import ContentBegin from "./components/ContentBegin";
 import ContentSecond from "./components/ContentSecond";
 
+// eslint-disable-next-line
+const butler = localFont({
+  src: './fonts/Butler_Regular.otf',
+  variable: '--font-butler',
+  weight: '100 900'
+})
+
+// eslint-disable-next-line
+const newsreaderDisplay = localFont({
+  src: './fonts/NewsreaderDisplay-Regular.ttf',
+  variable: '--font-newsreader-display',
+  weight: '100 900'
+})
+
+// eslint-disable-next-line
+const newsreaderText = localFont({
+  src: './fonts/NewsreaderText-Regular.ttf',
+  variable: '--font-newsreader-text',
+  weight: '100 900'
+})
+
 const poppins = localFont({
   src: './fonts/Poppins-Regular.otf',
   variable: '--font-poppins',
