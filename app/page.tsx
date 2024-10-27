@@ -8,24 +8,6 @@ import Cover from "./components/Cover";
 import ContentBegin from "./components/ContentBegin";
 import ContentSecond from "./components/ContentSecond";
 
-const butler = localFont({
-  src: './fonts/Butler_Regular.otf',
-  variable: '--font-butler',
-  weight: '100 900'
-})
-
-const newsreaderDisplay = localFont({
-  src: './fonts/NewsreaderDisplay-Regular.ttf',
-  variable: '--font-newsreader-display',
-  weight: '100 900'
-})
-
-const newsreaderText = localFont({
-  src: './fonts/NewsreaderText-Regular.ttf',
-  variable: '--font-newsreader-text',
-  weight: '100 900'
-})
-
 const poppins = localFont({
   src: './fonts/Poppins-Regular.otf',
   variable: '--font-poppins',
@@ -78,7 +60,6 @@ export default function Home() {
       h='100%'
       bgColor='transparent'
       justify='space-between'
-      className={`${butler.variable} ${newsreaderDisplay.variable} ${newsreaderText.variable}`}
     >
       <FixedLeft
         isShow={isShow}
