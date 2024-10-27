@@ -1,101 +1,158 @@
-import Image from "next/image";
+'use client'
+
+import { Box, Button, Center, Flex, SlideFade, Stack, Text } from "@chakra-ui/react";
+import localFont from "next/font/local";
+import { useEffect, useRef, useState } from "react";
+import FixedLeft from "./components/FixedLeft";
+import Cover from "./components/Cover";
+import ContentBegin from "./components/ContentBegin";
+import ContentSecond from "./components/ContentSecond";
+
+const butler = localFont({
+  src: './fonts/Butler_Regular.otf',
+  variable: '--font-butler',
+  weight: '100 900'
+})
+
+const newsreaderDisplay = localFont({
+  src: './fonts/NewsreaderDisplay-Regular.ttf',
+  variable: '--font-newsreader-display',
+  weight: '100 900'
+})
+
+const newsreaderText = localFont({
+  src: './fonts/NewsreaderText-Regular.ttf',
+  variable: '--font-newsreader-text',
+  weight: '100 900'
+})
+
+const poppins = localFont({
+  src: './fonts/Poppins-Regular.otf',
+  variable: '--font-poppins',
+  weight: '100 900'
+})
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [isShow, setShow] = useState(false);
+  const [isOpen, setOpen] = useState(false);
+  const [isBegin, setBegin] = useState(false);
+  const scrollTarget = useRef<any>(null)
+  const myAudio = useRef<any>(null)
+  const [isPlaying, setPlaying] = useState(false)
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+  useEffect(() => {
+    setShow(true);
+  }, []);
+
+  function handleOpen() {
+    setOpen(true)
+    setPlaying(true)
+    if (myAudio.current) {
+      myAudio.current.play()
+    }
+  }
+
+  async function handleBegin() {
+    if (scrollTarget.current) {
+      await scrollTarget.current.scrollIntoView({ behavior: 'smooth' })
+      setBegin(true)
+    }
+  }
+
+  function handleAudio() {
+    if (myAudio.current) {
+      isPlaying
+        ? myAudio.current.pause()
+        : myAudio.current.play()
+    
+      setPlaying(!isPlaying)
+    }
+  }
+
+  return (
+    <Flex
+      pos='relative'
+      w='100%'
+      h='100%'
+      bgColor='transparent'
+      justify='space-between'
+    >
+      <FixedLeft
+        isShow={isShow}
+        poppins={poppins}
+      />
+
+      <Box
+        w={{
+          base: '100%',
+          alt: '500px'
+        }}
+        maxW='500px'
+        margin={{
+          base: 'auto',
+          alt: 'unset'
+        }}
+        pos='relative'
+        overflowX='hidden'
+      >
+        <Box
+          shadow='2xl'
         >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+          <Cover
+            isOpen={isOpen}
+            poppins={poppins}
+            onOpen={handleOpen}
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+
+          <Box>
+            <Box>
+              <audio ref={myAudio} loop className="hidden">
+                <source src="https://invitato.net/test-product-engineer/static/bg-sound-a2a8927862ee1aa412b3df1a7e46ff7c.mp3" type="audio/mpeg" />
+                Your browser does not support the audio element.
+              </audio>
+
+              <SlideFade
+                in={isOpen}
+                transition={{ enter: { duration: 1 } }}
+              >
+                <Button
+                  fontWeight='semibold'
+                  h='8'
+                  minW='8'
+                  fontSize='sm'
+                  color='gray.800'
+                  pos='fixed'
+                  zIndex='3'
+                  bottom='12px'
+                  left='42px'
+                  bgColor='rgb(153, 122, 94)'
+                  outline='transparent solid 2px'
+                  p='0px'
+                  borderRadius='50%'
+                  onClick={handleAudio}
+                >
+                  <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" color="#FFFFFF" aria-hidden="true" focusable="false" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style={{ color: 'rgb(255, 255, 255)' }}><path fill="none" d="M0 0h24v24H0z"></path><path d="M4.27 3 3 4.27l9 9v.28c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4v-1.73L19.73 21 21 19.73 4.27 3zM14 7h4V3h-6v5.18l2 2z"></path></svg>
+                </Button>
+              </SlideFade>
+            </Box>
+
+            {isOpen &&
+            <>
+              <ContentBegin
+                poppins={poppins}
+                onBegin={handleBegin}
+              />
+
+              <ContentSecond
+                ref={scrollTarget}
+                isShow={isBegin}
+                poppins={poppins}
+              />
+            </>
+            }
+          </Box>
+        </Box>
+      </Box>
+    </Flex>
   );
 }
