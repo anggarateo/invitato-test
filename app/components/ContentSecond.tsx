@@ -19,7 +19,7 @@ export default function ContentSecond(
 ) {
   const [isFocus, setFocus] = useState(false)
   const [isOpen, setOpen] = useState(false)
-  const [index, setIndex] = useState(0)
+  const [index, setIndex] = useState(2)
 
   const images = [
     { src: 'https://invitato.net/test-product-engineer/static/1-2b43ea516254cdff99c88a7fce90ae98.jpg', description: '' },
