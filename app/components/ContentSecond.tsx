@@ -130,6 +130,7 @@ export default function ContentSecond(
           showStatus={false}
           showThumbs={false}
           selectedItem={index}
+          infiniteLoop
           onChange={(i) => setIndex(i)}
         >
           {images.map((img, i) => (
