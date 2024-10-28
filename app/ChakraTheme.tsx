@@ -1,10 +1,10 @@
 import { extendTheme } from "@chakra-ui/react"
 import "@fontsource/newsreader"
-import "@fontsource/butler/latin.css"
+import "@fontsource/cormorant-garamond"
 
 const ChakraTheme = extendTheme({
   fonts: {
-    butler: `Butler`,
+    butler: `Cormorant Garamond`,
     newsreaderDisplay: `Newsreader`,
     newsreaderText: `Newsreader`,
     poppins: `--font-poppins`
